@@ -1,0 +1,32 @@
+[project]
+name = "ai_travel_agent_langchain"
+version = "0.1.0"
+description = "AI Travel Agent using LangChain"
+requires-python = ">=3.13"
+
+# 项目特有依赖
+dependencies = [
+    # 从 workspace 继承基础依赖
+    "streamlit>=1.24.0",
+    "requests>=2.31.0",
+    "google-search-results>=2.4.2",
+    "tavily-python>=0.3.0",
+    "google-api-python-client>=2.174.0",
+    "langchain-google-community>=2.0.7",
+    "watchdog>=6.0.0",
+    "langchain-openai>=0.3.27",
+    "langchain-tavily>=0.2.5",
+]
+
+[tool.setuptools]
+py-modules = ["travel_agent_langchain"]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+# 这个项目由上级 workspace 管理
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
