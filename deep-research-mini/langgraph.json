@@ -1,0 +1,26 @@
+{
+    "dockerfile_lines": [],
+    "graphs": {
+        "planner": "./src/agents/planner.py:planner",
+        "researcher": "./src/agents/researcher.py:researcher",
+        "supervisor": "./src/agents/supervisor.py:supervisor"
+    },
+    "python_version": "3.13",
+    "env": "./.env",
+    "dependencies": [
+        "."
+    ],
+    "http": {
+        "cors": {
+            "allow_origins": [
+                "*"
+            ],
+            "allow_methods": [
+                "*"
+            ],
+            "allow_headers": [
+                "*"
+            ]
+        }
+    }
+}
