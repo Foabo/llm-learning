@@ -93,3 +93,4 @@ wandb/
 # Project specific
 */pyrightconfig.json
 */.vscode/
+.langgraph_api

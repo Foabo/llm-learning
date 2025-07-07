@@ -1,0 +1,26 @@
+[project]
+name = "deep-research-mini"
+version = "0.1.0"
+description = "Deep Research Mini - AI Research Assistant"
+readme = "README.md"
+requires-python = ">=3.13"
+
+# 项目特有依赖
+dependencies = [
+    # 从 workspace 继承基础依赖
+    "firecrawl>=2.12.0",
+    "firecrawl-py>=2.12.0",
+    "jinja2>=3.1.6",
+    "langchain-openai>=0.3.27",
+    "langchain-openapi>=0.1.1",
+    "langchain-tavily>=0.2.5",
+    "langgraph>=0.5.0",
+    "langgraph-supervisor>=0.0.27",
+    "socksio>=1.0.0",
+]
+
+# 这个项目由上级 workspace 管理
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
