@@ -1,0 +1,29 @@
+[project]
+name = "rag-database-routing"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "agno",
+    "duckduckgo-search",
+    "langchain",
+    "langchain-community",
+    "langchain-core",
+    "langchain-openai",
+    "langgraph",
+    "pypdf",
+    "qdrant-client",
+    "sentence-transformers",
+    "streamlit",
+    "pydantic>=2.11.0",
+    "pydantic-settings>=2.10.0",
+    "requests>=2.32.0",
+    "httpx>=0.28.0",
+    "langchain-qdrant>=0.2.0",
+    "watchdog>=6.0.0",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
