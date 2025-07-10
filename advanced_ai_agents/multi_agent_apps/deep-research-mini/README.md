@@ -79,11 +79,14 @@ FIRECRAWL_API_KEY=your_firecrawl_api_key
 #### 方式 1：启动 LangGraph 服务 (推荐)
 
 ```bash
-# 启动开发服务器
+# 启动开发服务器 (推荐方式 - 避免依赖问题)
+uvx --refresh --from "langgraph-cli[inmem]" --with-editable . --python 3.13 langgraph dev --allow-blocking
+
+# 备选方式 (如果所有依赖都正确安装)
 uv run langgraph dev
 
-# 或启动生产服务器
-uv run langgraph up
+# 启动生产服务器
+uvx --refresh --from "langgraph-cli[inmem]" --with-editable . --python 3.13 langgraph up
 ```
 
 服务启动后，你可以通过 Web 界面访问代理系统。
@@ -163,6 +166,33 @@ print(result)
 - **Tavily**: 网络搜索 API
 - **Firecrawl**: 网页内容爬取
 - **Jinja2**: 模板引擎
+
+## 🔧 故障排除
+
+### 常见问题
+
+#### 1. `uv run langgraph dev` 报错 403 Forbidden
+
+**问题**: 使用国内镜像源时可能遇到包下载失败的问题。
+
+**解决方案**: 使用 `uvx` 命令代替：
+```bash
+uvx --refresh --from "langgraph-cli[inmem]" --with-editable . --python 3.13 langgraph dev --allow-blocking
+```
+
+**原因**: `uvx` 会创建一个隔离的环境来运行 langgraph-cli，避免了依赖冲突和镜像源问题。
+
+#### 2. 环境变量未加载
+
+确保在项目根目录下创建了 `.env` 文件并包含所需的 API 密钥。
+
+#### 3. Python 版本问题
+
+确保使用 Python >= 3.13，可以通过以下命令检查：
+```bash
+python --version
+uv python list
+```
 
 ## 🔗 相关链接
 
