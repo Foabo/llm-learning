@@ -1,0 +1,155 @@
+{
+    "folders": [
+        {
+            "name": "🏠 LLM Learning (主项目)",
+            "path": "."
+        },
+        {
+            "name": "🚀 AI Travel Agent (LangChain)",
+            "path": "./starter_ai_agents/ai_travel_agent_langchain"
+        },
+        {
+            "name": "🧠 Deep Research Mini (多代理)",
+            "path": "./advanced_ai_agents/multi_agent_apps/deep-research-mini"
+        },
+        {
+            "name": "📚 RAG Database Routing",
+            "path": "./rag_tutorials/rag_database_routing"
+        }
+    ],
+    "settings": {
+        "python.defaultInterpreterPath": "./.venv/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "python.analysis.autoSearchPaths": true,
+        "python.analysis.extraPaths": [
+            "./starter_ai_agents/ai_travel_agent_langchain",
+            "./advanced_ai_agents/multi_agent_apps/deep-research-mini/src",
+            "./rag_tutorials/rag_database_routing/src"
+        ],
+        "python.analysis.autoImportCompletions": true,
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": true,
+        "python.linting.pylintPath": "./.venv/bin/pylint",
+        "python.formatting.provider": "black",
+        "python.formatting.blackPath": "./.venv/bin/black",
+        "files.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/.pytest_cache": true,
+            "**/.mypy_cache": true,
+            "**/.coverage": true,
+            "**/htmlcov": true,
+            "**/.venv": false,
+            "**/node_modules": true,
+            "**/.git": false
+        },
+        "search.exclude": {
+            "**/__pycache__": true,
+            "**/*.pyc": true,
+            "**/.pytest_cache": true,
+            "**/.mypy_cache": true,
+            "**/node_modules": true,
+            "**/.venv/lib": true
+        },
+        "python.envFile": "${workspaceFolder}/.env",
+        "terminal.integrated.env.osx": {
+            "PYTHONPATH": "${workspaceFolder}:${workspaceFolder}/starter_ai_agents/ai_travel_agent_langchain:${workspaceFolder}/advanced_ai_agents/multi_agent_apps/deep-research-mini/src:${workspaceFolder}/rag_tutorials/rag_database_routing/src"
+        },
+        "terminal.integrated.env.linux": {
+            "PYTHONPATH": "${workspaceFolder}:${workspaceFolder}/starter_ai_agents/ai_travel_agent_langchain:${workspaceFolder}/advanced_ai_agents/multi_agent_apps/deep-research-mini/src:${workspaceFolder}/rag_tutorials/rag_database_routing/src"
+        },
+        "terminal.integrated.env.windows": {
+            "PYTHONPATH": "${workspaceFolder};${workspaceFolder}\\starter_ai_agents\\ai_travel_agent_langchain;${workspaceFolder}\\advanced_ai_agents\\multi_agent_apps\\deep-research-mini\\src;${workspaceFolder}\\rag_tutorials\\rag_database_routing\\src"
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "ms-python.pylint",
+            "ms-python.black-formatter",
+            "ms-python.isort",
+            "ms-toolsai.jupyter",
+            "charliermarsh.ruff",
+            "ms-vscode.vscode-json"
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "AI Travel Agent",
+                "type": "python",
+                "request": "launch",
+                "module": "streamlit",
+                "args": ["run", "travel_agent_langchain.py"],
+                "cwd": "${workspaceFolder}/starter_ai_agents/ai_travel_agent_langchain",
+                "console": "integratedTerminal",
+                "env": {
+                    "PYTHONPATH": "${workspaceFolder}/starter_ai_agents/ai_travel_agent_langchain"
+                }
+            },
+            {
+                "name": "Deep Research Mini",
+                "type": "python",
+                "request": "launch",
+                "program": "${workspaceFolder}/advanced_ai_agents/multi_agent_apps/deep-research-mini/main.py",
+                "cwd": "${workspaceFolder}/advanced_ai_agents/multi_agent_apps/deep-research-mini",
+                "console": "integratedTerminal",
+                "env": {
+                    "PYTHONPATH": "${workspaceFolder}/advanced_ai_agents/multi_agent_apps/deep-research-mini/src"
+                }
+            },
+            {
+                "name": "RAG Database Routing",
+                "type": "python",
+                "request": "launch",
+                "module": "streamlit",
+                "args": ["run", "main.py"],
+                "cwd": "${workspaceFolder}/rag_tutorials/rag_database_routing",
+                "console": "integratedTerminal",
+                "env": {
+                    "PYTHONPATH": "${workspaceFolder}/rag_tutorials/rag_database_routing/src"
+                }
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Install All Dependencies",
+                "type": "shell",
+                "group": "build",
+                "options": {
+                    "cwd": "${workspaceFolder}"
+                },
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "cd starter_ai_agents/ai_travel_agent_langchain && uv sync && cd ../../advanced_ai_agents/multi_agent_apps/deep-research-mini && uv sync && cd ../../../rag_tutorials/rag_database_routing && uv sync"
+                ]
+            },
+            {
+                "label": "Run All Tests",
+                "type": "shell",
+                "group": "test",
+                "options": {
+                    "cwd": "${workspaceFolder}/rag_tutorials/rag_database_routing"
+                },
+                "command": "uv",
+                "args": ["run", "python", "test/run_all_tests.py"]
+            },
+            {
+                "label": "Format All Code",
+                "type": "shell",
+                "group": "build",
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "find . -name '*.py' -not -path './.venv/*' -not -path './*/.*' | xargs black"
+                ]
+            }
+        ]
+    }
+} 

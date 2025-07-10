@@ -15,6 +15,7 @@ dependencies = [
     "langchain-openapi>=0.1.1",
     "langchain-tavily>=0.2.5",
     "langgraph>=0.5.0",
+    "langgraph-cli[inmem]>=0.1.0",
     "langgraph-supervisor>=0.0.27",
     "socksio>=1.0.0",
 ]
@@ -22,5 +23,5 @@ dependencies = [
 # 这个项目由上级 workspace 管理
 
 [[tool.uv.index]]
-url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+url = "https://mirrors.aliyun.com/pypi/simple"
 default = true
